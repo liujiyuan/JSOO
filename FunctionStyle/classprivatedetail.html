@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>class private detail</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../Scripts/oo.js"></script>
+</head>
+<body>
+以函数(Function)的方式demo类私有属性方法及其调用<br/>
+<textarea readonly="readonly" rows="50" cols="100">
+    <script>
+        H.namespace("First.Class",
+                function (ns) {
+
+                    ns.HelloWorld = H.Class(function () {
+
+                        //共有属性
+                        this.name = "hello world";
+
+                        //构造函数
+                        this._construct = function () {
+                            alert("hw");
+                        };
+
+                        //共有方法
+                        this.run = function () {
+                            //访问私有域
+                            alert(thatName);
+                            //访问共有属性
+                            alert(this.name);
+                            //设置私有域
+                            setThatName();
+                            showThatName();
+                            //调用其它共有方法
+                            this.otherMethod();
+                        }
+
+                        this.otherMethod = function () {
+                            alert("otherMethod");
+                        }
+                        //私有成员
+                        var thatName = "private Hello World";
+                        //私有方法
+                        function setThatName() {
+                            thatName = "set HelloWorld";
+                        }
+                        //私有方法
+                        function showThatName() {
+                            alert(thatName);
+                        }
+
+                    }).base(null);
+                }
+        );
+
+        var fc = H.using("First.Class");  //引用命名空间
+        var hw = new fc.HelloWorld();     //实例化一个类
+        hw.run();
+        hw.showThatName();//error 无法访问私有方法
+    </script>
+</textarea>
+<script>
+    H.namespace("First.Class",
+            function(ns){
+
+                ns.HelloWorld = H.Class(function(){
+
+                    //共有属性
+                    this.name="hello world";
+
+                    //构造函数
+                    this._construct = function(){
+                        alert("hw");
+                    };
+
+                    //共有方法
+                    this.run = function(){
+                        //访问私有域
+                        alert(thatName);
+                        //访问共有属性
+                        alert(this.name);
+                        //设置私有域
+                        setThatName();
+                        showThatName();
+                        //调用其它共有方法
+                        this.otherMethod();
+                    }
+
+                    this.otherMethod = function(){
+                        alert("otherMethod");
+                    }
+                    //私有成员
+                    var thatName = "private Hello World";
+                    //私有方法
+                    function setThatName(){
+                        thatName = "set HelloWorld";
+                    }
+                    //私有方法
+                    function showThatName(){
+                        alert(thatName);
+                    }
+
+                }).base(null);
+            }
+    );
+
+    var fc = H.using("First.Class");  //引用命名空间
+    var hw = new fc.HelloWorld();     //实例化一个类
+    hw.run();
+    hw.showThatName();//error 无法访问私有方法
+</script>
+</body>
+</html>

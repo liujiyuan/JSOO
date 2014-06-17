@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>multi declare Car</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="Scripts/oo.js"></script>
+    <script type="text/javascript" src="Scripts/part1.js"></script>
+    <script type="text/javascript" src="Scripts/part2.js"></script>
+    <script type="text/javascript" src="Scripts/part3.js"></script>
+</head>
+<body>
+1、多个文件声明不同的类        <br/>
+2、以闭包的方式声明以避免H全局变量的冲突 <br/>
+<textarea readonly="readonly" rows="50" cols="100">
+    <script type="text/javascript" src="Scripts/part1.js"></script>
+    <script type="text/javascript" src="Scripts/part2.js"></script>
+    <script type="text/javascript" src="Scripts/part3.js"></script>
+    <script>
+        //引用一个命名空间
+        var fc = H.using("First.Class");
+        var car = new fc.Car();
+        car.show();
+
+        var greatewall = new fc.GreatWall();
+        greatewall.show();
+    </script>
+</textarea>
+<script>
+    //引用一个命名空间
+    var fc = H.using("First.Class");
+    var car = new fc.Car();
+    car.show();
+
+    var greatewall = new fc.GreatWall();
+    greatewall.show();
+</script>
+</body>
+</html>

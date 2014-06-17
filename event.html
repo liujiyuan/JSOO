@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>event</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="Scripts/oo.js"></script>
+    <script type="text/javascript" src="Scripts/event.js"></script>
+</head>
+<body>
+
+1、如何触发事件 <br/>
+2、如何监听事件  <br/>
+3、传递事件数据  <br/>
+<button>触发事件</button><br />
+<textarea readonly="readonly" rows="50" cols="100">
+    <script>
+        $("button").bind("click", function(event){
+            //触发事件
+            //name所属的对象为事件传递的数据
+            HexStudy.Event.fire("fireeventdemo", {name : "event data"});
+        });
+
+        //监听fireeventdemo事件
+        HexStudy.Event.attach("fireeventdemo",function(event){
+            //显示传递的事件数据
+            if(typeof event === "undefined" || typeof event.data === "undefined")
+                return;
+            alert(event.data.name);
+        });
+
+    </script>
+</textarea>
+<script>
+    $("button").bind("click", function(event){
+        //触发事件
+        //name所属的对象为事件传递的数据
+        HexStudy.Event.fire("fireeventdemo", {name : "event data"});
+    });
+
+    //监听fireeventdemo事件
+    HexStudy.Event.attach("fireeventdemo",function(event){
+        //显示传递的事件数据
+        if(typeof event === "undefined" || typeof event.data === "undefined")
+            return;
+        alert(event.data.name);
+    });
+
+</script>
+</body>
+</html>

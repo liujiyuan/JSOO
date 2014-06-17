@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>static method</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../Scripts/oo.js"></script>
+</head>
+<body>
+以函数(Function)的方式demo static method<br/>
+1、以下代码声明了一个类 HelloWorld      <br/>
+2、声明一个名为showColor的静态方法，请注意其中的第一步和第二步，我们约定所有的静态方法都在static变量下     <br/>
+<textarea readonly="readonly" rows="50" cols="100">
+    <script>
+        //声明
+        var fc = H.namespace("First.Class",
+                function (ns) {
+
+                    ns.HelloWorld = H.Class(function () {
+
+                        //共有属性
+                        this.name = "hello world";
+
+                        //构造函数
+                        this._construct = function () {
+                            alert("construct");
+
+                        };
+
+                        //第一步创建static变量
+                        this.static = {};
+                        //第二步在static变量中声明方法，该方法为静态方法
+                        this.static.staticShow = function () {
+                            alert("I am a static method!");
+                        }
+
+                    }).base(null);
+                }
+        );
+        //调用
+        fc.HelloWorld.staticShow();
+    </script>
+</textarea>
+<script>
+    //声明
+    var fc = H.namespace("First.Class",
+            function(ns){
+
+                ns.HelloWorld = H.Class(function(){
+
+                    //共有属性
+                    this.name = "hello world";
+
+                    //构造函数
+                    this._construct = function(){
+                        alert("construct");
+
+                    };
+
+                    //第一步创建static变量
+                    this.static = {};
+                    //第二步在static变量中声明方法，该方法为静态方法
+                    this.static.staticShow = function(){
+                        alert("I am a static method!");
+                    }
+
+                }).base(null);
+            }
+    );
+    //调用
+    fc.HelloWorld.staticShow();
+</script>
+</body>
+</html>

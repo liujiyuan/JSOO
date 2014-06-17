@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>inherit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../Scripts/oo.js"></script>
+</head>
+<body>
+申明两个类：Car为父类，GreatWall为子类 <br/>
+调用父类的方法语法：this.base.<i>method()</i>;<br />
+<textarea readonly="readonly" rows="50" cols="100">
+    <script>
+        var fc = H.namespace("First.Class",
+                function (ns) {
+
+                    ns.Car = H.Class(function () {
+
+                        //共有属性
+                        this.name = "car";
+
+                        //构造函数
+                        this._construct = function () {
+                            alert("construct car!");
+
+                        };
+
+                        //共有方法
+                        this.show = function () {
+                            alert(this.name);
+                        }
+
+
+                    }).base(null);
+
+                    ns.GreatWall = H.Class(function () {
+
+                        //共有属性
+                        this.name = "GreatWall";
+
+                        //构造函数
+                        this._construct = function () {
+                            alert("construct GreatWall!");
+
+                        };
+
+                        //共有方法
+                        this.show = function () {
+                            this.base.show();  //调用父类方法
+                            //ns.GreatWall.superClass.show();
+                            alert(this.name);
+                        }
+
+                    }).base(ns.Car);
+
+                    ns.H8 = H.Class(function () {
+                        //构造函数
+                        this._construct = function () {
+                            this.name = "H8";
+                            alert("construct H8!");
+                        };
+
+                        //共有方法
+                        this.show = function () {
+                            this.base.show();
+                            //ns.GreatWall.superClass.show();
+                            alert("car " + this.name);
+                        }
+                    }).base(ns.GreatWall);
+
+                }
+        );
+        var gw = new fc.GreatWall();
+        gw.show();
+
+        /* var h8 = new fc.H8();
+         alert("invoke H8.show()");
+         h8.show();*/
+    </script>
+</textarea>
+<script>
+    var fc = HexStudy.namespace("First.Class",
+            function(ns){
+
+                ns.Car = H.Class(function(){
+
+                    //共有属性
+                    this.name="car";
+
+                    //构造函数
+                    this._construct = function(){
+                        alert("construct car!");
+
+                    };
+
+                    //共有方法
+                    this.show = function(){
+                        alert(this.name);
+                    }
+
+
+                }).base(null);
+
+                ns.GreatWall = H.Class(function(){
+
+                    //共有属性
+                    this.name="GreatWall";
+
+                    //构造函数
+                    this._construct = function(){
+                        alert("construct GreatWall!");
+
+                    };
+
+                    //共有方法
+                    this.show = function(){
+                        //this.base.show();  //调用父类方法
+                        //ns.GreatWall.superClass.show();
+                        alert(this.name);
+                    }
+
+                }).base(ns.Car);
+
+                ns.H8 = H.Class(function(){
+                    //构造函数
+                    this._construct = function(){
+                        this.name = "H8";
+                        alert("construct H8!");
+                    };
+
+                    //共有方法
+                    this.show = function(){
+                        this.base.show();
+                        //ns.GreatWall.superClass.show();
+                        alert("car "+this.name );
+                    }
+                }).base(ns.GreatWall);
+
+            }
+    );
+    var gw = new fc.GreatWall();
+    gw.show();
+
+    //var h8 = new fc.H8();
+    /*alert("invoke H8.show()");
+     h8.show();*/
+</script>
+</body>
+</html>

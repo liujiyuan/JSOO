@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class by Function</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="../Scripts/oo.js"></script>
+</head>
+<body>
+以函数(Function)的方式声明类<br/>
+1、以下代码声明了一个类 HelloWorld      <br/>
+2、声明了共有属性，构造函数，共有方法     <br/>
+<textarea readonly="readonly" rows="50" cols="100">
+    <script>
+        var fc = H.namespace("First.Class",
+                function (ns) {
+
+                    ns.HelloWorld = H.Class(function () {
+
+                        //共有属性
+                        this.name = "hello world";
+
+                        //构造函数
+                        this._construct = function () {
+                            alert("construct");
+
+                        };
+
+                        //共有方法
+                        this.show = function () {
+                            alert(this.name);
+                        }
+
+                    }).base(null);
+                }
+        );
+        var hw = new fc.HelloWorld();
+        alert(hw.name);
+        hw.show();
+        hw.name = "new name";
+        hw.show();
+    </script>
+</textarea>
+<script>
+    var fc = H.namespace("First.Class",
+            function(ns){
+
+                ns.HelloWorld = H.Class(function(){
+
+                    //共有属性
+                    this.name = "hello world";
+
+                    //构造函数
+                    this._construct = function(){
+                        alert("construct");
+
+                    };
+
+                    //共有方法
+                    this.show = function(){
+                        alert(this.name);
+                    }
+
+                }).base(null);
+            }
+    );
+    var hw = new fc.HelloWorld();
+    alert(hw.name);
+    hw.show();
+    hw.name = "new name";
+    hw.show();
+</script>
+</body>
+</html>

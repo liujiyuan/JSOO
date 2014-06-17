@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>namespace</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="Scripts/oo.js"></script>
+</head>
+<body>
+
+1、以下代码声明了一个名为 "Ebook.Chapter" 的命名空间      <br/>
+2、后续的代码中引用了该命名空间     <br/>
+<textarea readonly="readonly" rows="50" cols="100">
+    <script>
+        //声明一个命名空间
+        var dec = H.namespace("Ebook.Chapter",
+                function (ns) {
+
+                    /**
+                     * 声明一个类
+                     * 构造函数.
+                     * @name UnderLine
+                     * @class UnderLine 是电子书划重点的类工具集合。
+                     */
+                    ns.UnderLine = function () {
+                        //声明一个方法
+                        this.showColor = function () {
+                            alert("blur");
+                        }
+                    }
+                }
+        );
+
+        //引用一个命名空间
+        var ec = H.using("Ebook.Chapter");
+        //实例化UnderLine
+        var ul = new ec.UnderLine();
+        //调用共有方法
+        ul.showColor();
+    </script>
+</textarea>
+<script>
+    //声明一个命名空间
+    var dec = H.namespace("Ebook.Chapter",
+            function(ns){
+
+                /**
+                 * 声明一个类
+                 * 构造函数.
+                 * @name UnderLine
+                 * @class UnderLine 是电子书划重点的类工具集合。
+                 */
+                ns.UnderLine = function(){
+                    //声明一个方法
+                    this.showColor = function(){
+                        alert("blur");
+                    }
+                }
+
+            }
+    );
+
+
+    //引用一个命名空间
+    var ec = H.using("Ebook.Chapter");
+    //实例化UnderLine
+    var ul = new ec.UnderLine();
+    //调用共有方法
+    ul.showColor();
+
+</script>
+</body>
+</html>
